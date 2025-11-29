@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>documentation.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="plane-shooter-game---complete-documentation">Plane Shooter Game - Complete Documentation</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-project-overview">Project Overview</a></li>
+<li><a href="#2-project-structure">Project Structure</a></li>
+<li><a href="#3-installation--setup">Installation &amp; Setup</a></li>
+<li><a href="#4-architecture">Architecture</a></li>
+<li><a href="#5-development-guide">Development Guide</a></li>
+<li><a href="#6-docker-deployment">Docker Deployment</a></li>
+</ol>
+<hr>
+<h2 id="1-project-overview">1. Project Overview</h2>
+<h3 id="description">Description</h3>
+<p>Plane Shooter is a web-based arcade-style shooting game built with React and modern web technologies. Players control a plane that must dodge and destroy enemies while managing limited ammunition and health. The game features dynamic scrolling backgrounds, enemy spawning systems, collision detection, and a comprehensive HUD for tracking game stats.</p>
+<h3 id="game-host">Game Host</h3>
+<p>https://candid-frangipane-82f9e1.netlify.app/</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Interactive Gameplay</strong>: Control a player plane using keyboard inputs (arrow keys and spacebar)</li>
+<li><strong>Enemy System</strong>: Multiple enemy types with varied behaviors and spawn patterns</li>
+<li><strong>Combat Mechanics</strong>: Shooting system with bullet management and collision detection</li>
+<li><strong>Health &amp; Ammo Management</strong>: Limited resources that affect gameplay strategy</li>
+<li><strong>Progressive Difficulty</strong>: Enemy spawn rates increase as the game progresses</li>
+<li><strong>Visual Effects</strong>: Smooth animations, parallax scrolling backgrounds, and dynamic rendering</li>
+<li><strong>Game States</strong>: Menu, playing, paused, and game over states with appropriate UI</li>
+<li><strong>Responsive Design</strong>: Adapts to different screen sizes while maintaining gameplay integrity</li>
+</ul>
+<h3 id="technology-stack">Technology Stack</h3>
+<ul>
+<li><strong>Frontend Framework</strong>: React 18.x with Hooks (useState, useEffect, useCallback, useRef)</li>
+<li><strong>Styling</strong>: CSS3 with custom animations and responsive design</li>
+<li><strong>Build Tool</strong>: Vite for fast development and optimized production builds</li>
+<li><strong>Containerization</strong>: Docker for consistent deployment across environments</li>
+<li><strong>Code Quality</strong>: ESLint for code linting and quality assurance</li>
+</ul>
+<hr>
+<h2 id="2-project-structure">2. Project Structure</h2>
+<h3 id="root-directory-layout">Root Directory Layout</h3>
+<pre class="hljs"><code><div>plane-shooter-app/
+├── public/                  # Static assets served directly
+│   ├── assets/             # Game assets (images, sprites)
+│   ├── index.html          # Main HTML entry point
+│   └── vite.svg            # Vite logo
+├── src/                    # Source code directory
+│   ├── components/         # React components
+│   │   ├── Bullet.jsx     # Bullet rendering component
+│   │   ├── Enemy.jsx      # Enemy rendering component
+│   │   ├── GameCanvas.jsx # Main game canvas and logic
+│   │   ├── HUD.jsx        # Heads-up display component
+│   │   └── Player.jsx     # Player plane component
+│   ├── constants/          # Configuration and constants
+│   │   └── gameConfig.js  # Game parameters and settings
+│   ├── hooks/              # Custom React hooks
+│   │   ├── audio.js               # Audio management hook
+│   │   ├── enemySpawner.js        # Enemy spawning logic
+│   │   ├── gameState.js           # Game state management
+│   │   ├── imageLoader.js         # Asset preloading
+│   │   ├── mainGameLoopHook.js    # Main game loop coordination
+│   │   ├── scrollingBackground.js # Background animation
+│   │   └── useGameLoop.js         # Core game loop hook
+│   ├── utils/              # Utility functions
+│   │   └── collision.js   # Collision detection algorithms
+│   ├── App.jsx             # Root React component
+│   ├── main.jsx            # Application entry point
+│   └── index.css           # Global styles
+├── .dockerignore           # Docker ignore patterns
+├── .gitignore              # Git ignore patterns
+├── Dockerfile              # Docker configuration
+├── eslint.config.js        # ESLint configuration
+├── index.html              # HTML template
+├── package-lock.json       # Locked dependency versions
+├── package.json            # Project metadata and dependencies
+├── README.md               # Project readme
+└── vite.config.js          # Vite build configuration
+</div></code></pre>
+<h3 id="component-hierarchy">Component Hierarchy</h3>
+<pre class="hljs"><code><div>App.jsx (Root)
+└── GameCanvas.jsx (Main Game Container)
+    ├── Player.jsx (Player Plane)
+    ├── Enemy.jsx × N (Multiple Enemies)
+    ├── Bullet.jsx × N (Multiple Bullets)
+    └── HUD.jsx (Game Stats Display)
+</div></code></pre>
+<h3 id="file-descriptions">File Descriptions</h3>
+<h4 id="components">Components</h4>
+<ul>
+<li><strong>Bullet.jsx</strong>: Renders individual bullets with position and appearance based on game state</li>
+<li><strong>Enemy.jsx</strong>: Handles enemy rendering, positioning, and visual representation</li>
+<li><strong>GameCanvas.jsx</strong>: Core game container managing all game logic, state, and rendering coordination</li>
+<li><strong>HUD.jsx</strong>: Displays game statistics including score, health, ammo, and game state messages</li>
+<li><strong>Player.jsx</strong>: Renders the player plane with current position and visual state</li>
+</ul>
+<h4 id="constants">Constants</h4>
+<ul>
+<li><strong>gameConfig.js</strong>: Centralized configuration containing game dimensions, player stats, enemy parameters, bullet properties, and timing constants</li>
+</ul>
+<h4 id="hooks">Hooks</h4>
+<ul>
+<li><strong>audio.js</strong>: Manages game audio including background music and sound effects</li>
+<li><strong>enemySpawner.js</strong>: Controls enemy generation, spawn timing, and difficulty progression</li>
+<li><strong>gameState.js</strong>: Manages overall game state including health, score, ammo, and game phase</li>
+<li><strong>imageLoader.js</strong>: Preloads game assets to ensure smooth gameplay without loading delays</li>
+<li><strong>mainGameLoopHook.js</strong>: Orchestrates all game systems and coordinates the main game loop</li>
+<li><strong>scrollingBackground.js</strong>: Creates parallax scrolling effect for game background</li>
+<li><strong>useGameLoop.js</strong>: Provides the foundational game loop using requestAnimationFrame</li>
+</ul>
+<h4 id="utils">Utils</h4>
+<ul>
+<li><strong>collision.js</strong>: Implements bounding box collision detection for game entities</li>
+</ul>
+<hr>
+<h2 id="3-installation--setup">3. Installation &amp; Setup</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before starting, ensure you have the following installed on your system:</p>
+<ul>
+<li><strong>Node.js</strong>: Version 16.x or higher (includes npm)</li>
+<li><strong>npm</strong>: Version 8.x or higher (comes with Node.js)</li>
+<li><strong>Git</strong>: For cloning the repository</li>
+<li><strong>Docker</strong> (Optional): For containerized deployment</li>
+</ul>
+<h3 id="local-development-setup">Local Development Setup</h3>
+<h4 id="step-1-clone-the-repository">Step 1: Clone the Repository</h4>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/HadeerFawzyy44/plane-shooter-app.git
+<span class="hljs-built_in">cd</span> plane-shooter-app
+</div></code></pre>
+<h4 id="step-2-install-dependencies">Step 2: Install Dependencies</h4>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+<p>This command installs all required packages including:</p>
+<ul>
+<li>React and React-DOM for UI rendering</li>
+<li>Vite for development server and building</li>
+<li>ESLint for code quality</li>
+<li>All development dependencies</li>
+</ul>
+<h4 id="step-3-start-development-server">Step 3: Start Development Server</h4>
+<pre class="hljs"><code><div>npm run dev
+</div></code></pre>
+<p>The development server will start on <code>http://localhost:5173</code> by default. The application features hot module replacement, so changes to your code will be reflected immediately in the browser without a full page reload.</p>
+<h4 id="step-4-access-the-game">Step 4: Access the Game</h4>
+<p>Open your web browser and navigate to the URL shown in the terminal (typically <code>http://localhost:5173</code>). The game should load automatically.</p>
+<h3 id="environment-configuration">Environment Configuration</h3>
+<p>The game uses default configurations defined in <code>src/constants/gameConfig.js</code>. To modify game parameters:</p>
+<ol>
+<li>Open <code>src/constants/gameConfig.js</code></li>
+<li>Adjust values such as player speed, enemy spawn rates, bullet damage, etc.</li>
+<li>Save the file and restart the development server</li>
+</ol>
+<p>Example configuration options:</p>
+<ul>
+<li><code>GAME_WIDTH</code> and <code>GAME_HEIGHT</code>: Canvas dimensions</li>
+<li><code>PLAYER_SPEED</code>: Movement speed of player plane</li>
+<li><code>ENEMY_SPAWN_INTERVAL</code>: Time between enemy spawns</li>
+<li><code>BULLET_SPEED</code>: Projectile velocity</li>
+<li><code>MAX_AMMO</code>: Starting ammunition count</li>
+</ul>
+<hr>
+<h2 id="4-architecture">4. Architecture</h2>
+<h3 id="game-loop-architecture">Game Loop Architecture</h3>
+<p>The game follows a classic game loop pattern coordinated through custom React hooks:</p>
+<pre class="hljs"><code><div>┌─────────────────────────────────────────┐
+│     useGameLoop (Core Loop)             │
+│  - requestAnimationFrame coordination   │
+│  - Delta time calculation                │
+│  - Frame rate management                 │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│   mainGameLoopHook (Game Logic)         │
+│  - Update all game entities              │
+│  - Process collisions                    │
+│  - Handle state transitions              │
+└────────────────┬────────────────────────┘
+                 │
+    ┌────────────┼────────────┐
+    ▼            ▼            ▼
+┌────────┐  ┌────────┐  ┌──────────┐
+│ Player │  │Enemies │  │ Bullets  │
+│ Update │  │ Update │  │  Update  │
+└────────┘  └────────┘  └──────────┘
+</div></code></pre>
+<hr>
+<h2 id="5-docker-deployment">5. Docker Deployment</h2>
+<h3 id="docker-hub-image">Docker Hub Image</h3>
+<p>The application is available as a pre-built Docker image on Docker Hub for easy deployment.</p>
+<h4 id="image-information">Image Information</h4>
+<ul>
+<li><strong>Image Name</strong>: <code>hadeerfawzyy/plane-shooter-app</code></li>
+<li><strong>Tags</strong>: <code>latest</code> (most recent build)</li>
+<li><strong>Base Image</strong>: Node.js with Nginx for serving static files</li>
+<li><strong>Size</strong>: Optimized for production deployment</li>
+</ul>
+<h3 id="pulling-and-running-from-docker-hub">Pulling and Running from Docker Hub</h3>
+<h4 id="step-1-install-docker">Step 1: Install Docker</h4>
+<p><strong>Windows/Mac</strong>: Download and install Docker Desktop from <a href="https://www.docker.com/products/docker-desktop">docker.com</a></p>
+<p><strong>Linux (Ubuntu/Debian)</strong>:</p>
+<pre class="hljs"><code><div>sudo apt-get update
+sudo apt-get install docker.io
+sudo systemctl start docker
+sudo systemctl <span class="hljs-built_in">enable</span> docker
+</div></code></pre>
+<p><strong>Linux (CentOS/RHEL)</strong>:</p>
+<pre class="hljs"><code><div>sudo yum install docker
+sudo systemctl start docker
+sudo systemctl <span class="hljs-built_in">enable</span> docker
+</div></code></pre>
+<h4 id="step-2-pull-the-image-from-docker-hub">Step 2: Pull the Image from Docker Hub</h4>
+<pre class="hljs"><code><div>docker pull hadeerfawzyy/plane-shooter-app:latest
+</div></code></pre>
+<p>This command downloads the pre-built image from Docker Hub. The download time depends on your internet connection speed (image is typically 50-150MB).</p>
+<h4 id="step-3-run-the-container">Step 3: Run the Container</h4>
+<p><strong>Basic Run Command</strong>:</p>
+<pre class="hljs"><code><div>docker run -d -p 8080:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:latest
+</div></code></pre>
+<p><strong>Command Explanation</strong>:</p>
+<ul>
+<li><code>-d</code>: Run container in detached mode (background)</li>
+<li><code>-p 8080:80</code>: Map port 8080 on host to port 80 in container</li>
+<li><code>--name plane-shooter</code>: Assign a friendly name to the container</li>
+<li><code>hadeerfawzyy/plane-shooter-app:latest</code>: The image to run</li>
+</ul>
+<p><strong>Alternative Port Mapping</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Use port 3000 instead</span>
+docker run -d -p 3000:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:latest
+
+<span class="hljs-comment"># Use port 80 (requires sudo on Linux)</span>
+sudo docker run -d -p 80:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:latest
+</div></code></pre>
+<h4 id="step-4-access-the-application">Step 4: Access the Application</h4>
+<p>Open your web browser and navigate to:</p>
+<ul>
+<li><code>http://localhost:8080</code> (or whatever port you specified)</li>
+<li><code>http://YOUR_SERVER_IP:8080</code> (for remote servers)</li>
+</ul>
+<p>The game should load and be fully playable.</p>
+<h3 id="docker-container-management">Docker Container Management</h3>
+<h4 id="view-running-containers">View Running Containers</h4>
+<pre class="hljs"><code><div>docker ps
+</div></code></pre>
+<h4 id="view-all-containers-including-stopped">View All Containers (including stopped)</h4>
+<pre class="hljs"><code><div>docker ps -a
+</div></code></pre>
+<h4 id="stop-the-container">Stop the Container</h4>
+<pre class="hljs"><code><div>docker stop plane-shooter
+</div></code></pre>
+<h4 id="start-a-stopped-container">Start a Stopped Container</h4>
+<pre class="hljs"><code><div>docker start plane-shooter
+</div></code></pre>
+<h4 id="restart-the-container">Restart the Container</h4>
+<pre class="hljs"><code><div>docker restart plane-shooter
+</div></code></pre>
+<h4 id="remove-the-container">Remove the Container</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stop first if running</span>
+docker stop plane-shooter
+
+<span class="hljs-comment"># Remove container</span>
+docker rm plane-shooter
+</div></code></pre>
+<h4 id="view-container-logs">View Container Logs</h4>
+<pre class="hljs"><code><div>docker logs plane-shooter
+
+<span class="hljs-comment"># Follow logs in real-time</span>
+docker logs -f plane-shooter
+</div></code></pre>
+<h4 id="execute-commands-in-running-container">Execute Commands in Running Container</h4>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> -it plane-shooter /bin/bash
+</div></code></pre>
+<h3 id="building-your-own-docker-image-optional">Building Your Own Docker Image (Optional)</h3>
+<p>If you want to build the image locally from source:</p>
+<h4 id="step-1-ensure-dockerfile-exists">Step 1: Ensure Dockerfile Exists</h4>
+<p>The repository includes a Dockerfile with the following structure:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Build stage</span>
+<span class="hljs-keyword">FROM</span> node:<span class="hljs-number">18</span>-alpine AS build
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package*.json ./</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> npm ci</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . .</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> npm run build</span>
+
+<span class="hljs-comment"># Production stage</span>
+<span class="hljs-keyword">FROM</span> nginx:alpine
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=build /app/dist /usr/share/nginx/html</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [<span class="hljs-string">"nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span>
+</div></code></pre>
+<h4 id="step-2-build-the-image">Step 2: Build the Image</h4>
+<pre class="hljs"><code><div>docker build -t plane-shooter-app:<span class="hljs-built_in">local</span> .
+</div></code></pre>
+<h4 id="step-3-run-your-local-build">Step 3: Run Your Local Build</h4>
+<pre class="hljs"><code><div>docker run -d -p 8080:80 --name plane-shooter-local plane-shooter-app:<span class="hljs-built_in">local</span>
+</div></code></pre>
+<hr>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="useful-commands-summary">Useful Commands Summary</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Development</span>
+npm install              <span class="hljs-comment"># Install dependencies</span>
+npm run dev             <span class="hljs-comment"># Start development server</span>
+npm run build           <span class="hljs-comment"># Build for production</span>
+npm run preview         <span class="hljs-comment"># Preview production build</span>
+
+<span class="hljs-comment"># Docker</span>
+docker pull hadeerfawzyy/plane-shooter-app:latest    <span class="hljs-comment"># Pull image</span>
+docker run -d -p 8080:80 --name plane-shooter \
+  hadeerfawzyy/plane-shooter-app:latest              <span class="hljs-comment"># Run container</span>
+docker ps                                             <span class="hljs-comment"># List containers</span>
+docker logs plane-shooter                            <span class="hljs-comment"># View logs</span>
+docker stop plane-shooter                            <span class="hljs-comment"># Stop container</span>
+docker start plane-shooter                           <span class="hljs-comment"># Start container</span>
+docker rm plane-shooter                              <span class="hljs-comment"># Remove container</span>
+</div></code></pre>
+<h3 id="project-links">Project Links</h3>
+<ul>
+<li><strong>Docker Hub</strong>: https://hub.docker.com/r/hadeerfawzyy/plane-shooter-app</li>
+<li><strong>Repository</strong>: (Add your repository URL here)</li>
+</ul>
+<hr>
+<p><strong>Last Updated</strong>: 2025
+<strong>Version</strong>: 1.0.0
+<strong>Maintainer</strong>: (Hadeer Fawzy)</p>
+
+</body>
+</html>
