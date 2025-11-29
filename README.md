@@ -1,4 +1,6 @@
-# Plane Shooter Game - Complete Documentation
+# Plane Shooter Game - Project Documentation
+
+#### Inspired by Chicken Invaders
 
 ## Table of Contents
 
@@ -419,10 +421,10 @@ docker rm plane-shooter                              # Remove container
 ### Project Links
 
 - **Docker Hub**: https://hub.docker.com/r/hadeerfawzyy/plane-shooter-app
-- **Repository**: (Add your repository URL here)
+- **Repository**: https://github.com/HadeerFawzyy44/plane-shooter-app
 
 ---
 
 **Last Updated**: 2025
 **Version**: 1.0.0
-**Maintainer**: (Hadeer Fawzy)
+**Maintainer**: Hadeer Fawzy
