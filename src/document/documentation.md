@@ -1,6 +1,7 @@
 # Plane Shooter Game - Complete Documentation
 
 ## Table of Contents
+
 1. [Project Overview](#1-project-overview)
 2. [Project Structure](#2-project-structure)
 3. [Installation & Setup](#3-installation--setup)
@@ -13,9 +14,11 @@
 ## 1. Project Overview
 
 ### Description
+
 Plane Shooter is a web-based arcade-style shooting game built with React and modern web technologies. Players control a plane that must dodge and destroy enemies while managing limited ammunition and health. The game features dynamic scrolling backgrounds, enemy spawning systems, collision detection, and a comprehensive HUD for tracking game stats.
 
 ### Key Features
+
 - **Interactive Gameplay**: Control a player plane using keyboard inputs (arrow keys and spacebar)
 - **Enemy System**: Multiple enemy types with varied behaviors and spawn patterns
 - **Combat Mechanics**: Shooting system with bullet management and collision detection
@@ -26,6 +29,7 @@ Plane Shooter is a web-based arcade-style shooting game built with React and mod
 - **Responsive Design**: Adapts to different screen sizes while maintaining gameplay integrity
 
 ### Technology Stack
+
 - **Frontend Framework**: React 18.x with Hooks (useState, useEffect, useCallback, useRef)
 - **Styling**: CSS3 with custom animations and responsive design
 - **Build Tool**: Vite for fast development and optimized production builds
@@ -37,6 +41,7 @@ Plane Shooter is a web-based arcade-style shooting game built with React and mod
 ## 2. Project Structure
 
 ### Root Directory Layout
+
 ```
 plane-shooter-app/
 ├── public/                  # Static assets served directly
@@ -77,6 +82,7 @@ plane-shooter-app/
 ```
 
 ### Component Hierarchy
+
 ```
 App.jsx (Root)
 └── GameCanvas.jsx (Main Game Container)
@@ -89,6 +95,7 @@ App.jsx (Root)
 ### File Descriptions
 
 #### Components
+
 - **Bullet.jsx**: Renders individual bullets with position and appearance based on game state
 - **Enemy.jsx**: Handles enemy rendering, positioning, and visual representation
 - **GameCanvas.jsx**: Core game container managing all game logic, state, and rendering coordination
@@ -96,9 +103,11 @@ App.jsx (Root)
 - **Player.jsx**: Renders the player plane with current position and visual state
 
 #### Constants
+
 - **gameConfig.js**: Centralized configuration containing game dimensions, player stats, enemy parameters, bullet properties, and timing constants
 
 #### Hooks
+
 - **audio.js**: Manages game audio including background music and sound effects
 - **enemySpawner.js**: Controls enemy generation, spawn timing, and difficulty progression
 - **gameState.js**: Manages overall game state including health, score, ammo, and game phase
@@ -108,6 +117,7 @@ App.jsx (Root)
 - **useGameLoop.js**: Provides the foundational game loop using requestAnimationFrame
 
 #### Utils
+
 - **collision.js**: Implements bounding box collision detection for game entities
 
 ---
@@ -115,7 +125,9 @@ App.jsx (Root)
 ## 3. Installation & Setup
 
 ### Prerequisites
+
 Before starting, ensure you have the following installed on your system:
+
 - **Node.js**: Version 16.x or higher (includes npm)
 - **npm**: Version 8.x or higher (comes with Node.js)
 - **Git**: For cloning the repository
@@ -124,23 +136,27 @@ Before starting, ensure you have the following installed on your system:
 ### Local Development Setup
 
 #### Step 1: Clone the Repository
+
 ```bash
-git clone <repository-url>
+git clone https://github.com/HadeerFawzyy44/plane-shooter-app.git
 cd plane-shooter-app
 ```
 
 #### Step 2: Install Dependencies
+
 ```bash
 npm install
 ```
 
 This command installs all required packages including:
+
 - React and React-DOM for UI rendering
 - Vite for development server and building
 - ESLint for code quality
 - All development dependencies
 
 #### Step 3: Start Development Server
+
 ```bash
 npm run dev
 ```
@@ -148,8 +164,8 @@ npm run dev
 The development server will start on `http://localhost:5173` by default. The application features hot module replacement, so changes to your code will be reflected immediately in the browser without a full page reload.
 
 #### Step 4: Access the Game
-Open your web browser and navigate to the URL shown in the terminal (typically `http://localhost:5173`). The game should load automatically.
 
+Open your web browser and navigate to the URL shown in the terminal (typically `http://localhost:5173`). The game should load automatically.
 
 ### Environment Configuration
 
@@ -160,6 +176,7 @@ The game uses default configurations defined in `src/constants/gameConfig.js`. T
 3. Save the file and restart the development server
 
 Example configuration options:
+
 - `GAME_WIDTH` and `GAME_HEIGHT`: Canvas dimensions
 - `PLAYER_SPEED`: Movement speed of player plane
 - `ENEMY_SPAWN_INTERVAL`: Time between enemy spawns
@@ -207,6 +224,7 @@ The game follows a classic game loop pattern coordinated through custom React ho
 The application is available as a pre-built Docker image on Docker Hub for easy deployment.
 
 #### Image Information
+
 - **Image Name**: `hadeerfawzyy/plane-shooter-app`
 - **Tags**: `latest` (most recent build)
 - **Base Image**: Node.js with Nginx for serving static files
@@ -219,6 +237,7 @@ The application is available as a pre-built Docker image on Docker Hub for easy 
 **Windows/Mac**: Download and install Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop)
 
 **Linux (Ubuntu/Debian)**:
+
 ```bash
 sudo apt-get update
 sudo apt-get install docker.io
@@ -227,6 +246,7 @@ sudo systemctl enable docker
 ```
 
 **Linux (CentOS/RHEL)**:
+
 ```bash
 sudo yum install docker
 sudo systemctl start docker
@@ -244,17 +264,20 @@ This command downloads the pre-built image from Docker Hub. The download time de
 #### Step 3: Run the Container
 
 **Basic Run Command**:
+
 ```bash
 docker run -d -p 8080:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:latest
 ```
 
 **Command Explanation**:
+
 - `-d`: Run container in detached mode (background)
 - `-p 8080:80`: Map port 8080 on host to port 80 in container
 - `--name plane-shooter`: Assign a friendly name to the container
 - `hadeerfawzyy/plane-shooter-app:latest`: The image to run
 
 **Alternative Port Mapping**:
+
 ```bash
 # Use port 3000 instead
 docker run -d -p 3000:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:latest
@@ -266,6 +289,7 @@ sudo docker run -d -p 80:80 --name plane-shooter hadeerfawzyy/plane-shooter-app:
 #### Step 4: Access the Application
 
 Open your web browser and navigate to:
+
 - `http://localhost:8080` (or whatever port you specified)
 - `http://YOUR_SERVER_IP:8080` (for remote servers)
 
@@ -274,31 +298,37 @@ The game should load and be fully playable.
 ### Docker Container Management
 
 #### View Running Containers
+
 ```bash
 docker ps
 ```
 
 #### View All Containers (including stopped)
+
 ```bash
 docker ps -a
 ```
 
 #### Stop the Container
+
 ```bash
 docker stop plane-shooter
 ```
 
 #### Start a Stopped Container
+
 ```bash
 docker start plane-shooter
 ```
 
 #### Restart the Container
+
 ```bash
 docker restart plane-shooter
 ```
 
 #### Remove the Container
+
 ```bash
 # Stop first if running
 docker stop plane-shooter
@@ -308,6 +338,7 @@ docker rm plane-shooter
 ```
 
 #### View Container Logs
+
 ```bash
 docker logs plane-shooter
 
@@ -316,6 +347,7 @@ docker logs -f plane-shooter
 ```
 
 #### Execute Commands in Running Container
+
 ```bash
 docker exec -it plane-shooter /bin/bash
 ```
@@ -327,6 +359,7 @@ If you want to build the image locally from source:
 #### Step 1: Ensure Dockerfile Exists
 
 The repository includes a Dockerfile with the following structure:
+
 ```dockerfile
 # Build stage
 FROM node:18-alpine AS build
@@ -344,14 +377,17 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 #### Step 2: Build the Image
+
 ```bash
 docker build -t plane-shooter-app:local .
 ```
 
 #### Step 3: Run Your Local Build
+
 ```bash
 docker run -d -p 8080:80 --name plane-shooter-local plane-shooter-app:local
 ```
+
 ---
 
 ## Additional Resources
@@ -380,6 +416,7 @@ docker rm plane-shooter                              # Remove container
 
 - **Docker Hub**: https://hub.docker.com/r/hadeerfawzyy/plane-shooter-app
 - **Repository**: (Add your repository URL here)
+
 ---
 
 **Last Updated**: 2025

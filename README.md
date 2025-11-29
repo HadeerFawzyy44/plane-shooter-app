@@ -138,7 +138,7 @@ Before starting, ensure you have the following installed on your system:
 #### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/HadeerFawzyy44/plane-shooter-app.git
 cd plane-shooter-app
 ```
 
