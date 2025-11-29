@@ -17,6 +17,10 @@
 
 Plane Shooter is a web-based arcade-style shooting game built with React and modern web technologies. Players control a plane that must dodge and destroy enemies while managing limited ammunition and health. The game features dynamic scrolling backgrounds, enemy spawning systems, collision detection, and a comprehensive HUD for tracking game stats.
 
+### Game Host
+
+https://candid-frangipane-82f9e1.netlify.app/
+
 ### Key Features
 
 - **Interactive Gameplay**: Control a player plane using keyboard inputs (arrow keys and spacebar)
